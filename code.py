@@ -27,8 +27,9 @@ def send_email(message, email, password,send_to_email, subject):
         server.sendmail(email, send_to_email, text)
         server.quit()
         print "sent email"
-    except:
-        print "probably not valid email address or not blocked email"
+    except Exception as e:
+        print e
+        # probably not valid email address or blocked email
 
 # you can call the function from a loop that run over list of emails
 # make sure to sign this for the email you want to send from: https://myaccount.google.com/lesssecureapps
