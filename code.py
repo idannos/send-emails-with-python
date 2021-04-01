@@ -5,8 +5,7 @@ from email.mime.multipart import MIMEMultipart
 def send_email(message, email, password,send_to_email, subject):
     """
     :param message: the message we want to send
-    :param email: the emails will be sent from this email always,
-     so the user wont enter his email
+    :param email: the email will send from this email address always
     :param password: the password for the email
     :param send_to_email: the email address we want to send to.
     :param subject: subject of the email message
@@ -29,7 +28,14 @@ def send_email(message, email, password,send_to_email, subject):
         print "sent email"
     except Exception as e:
         print e
-        # probably not valid email address or blocked email
 
-# you can call the function from a loop that run over list of emails
-# make sure to sign this for the email you want to send from: https://myaccount.google.com/lesssecureapps
+message = "the message itself"
+email = "my_email@gmail.com"
+password = "my_email_password"
+send_to_email = ["ar12@gmail.com", "ts@gmail.com"]  # add emails you want to send to to this list.
+subject = "mail's subject"
+
+for i in send_to_email:
+    send_email(message, email, password, i, subject)
+    #  keep in mind that running this function takes about 2 seconds,
+    #  if you want to send to hundreds mails you need try with threads maybe or another methods
